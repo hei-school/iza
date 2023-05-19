@@ -12,7 +12,7 @@ An iza-compliant API is an HTTP API that supports the two following calls:
 
 An iza-compliant mock server can be called [here](https://uzz59ld13f.execute-api.eu-central-1.amazonaws.com).
 
-API key is `iza-api-key` and is to be put in `x-api-key` header as is standard).
+API key is `iza-api-key` and is to be put in `x-api-key` header as is standard.
 
 Users are:
 
