@@ -25,14 +25,20 @@ bema = aUser("bema", "teacher")
 bozy = aUser("bozy", "teacher")
 lou = aUser("lou", "manager")
 
+apiKey = "iza-api-key"
+
 forbiddenResponse = {
     "statusCode": 403,
     "body": "forbidden"
 }
 
+notFoundResponse = {
+    "statusCode": 404,
+    "body": "not found"
+}
+
 def whoami_handler(event, context):
     headers = event["headers"]
-    logger.info(headers)
     bearer = headers["authorization"]
     if bearer == lita["bearer"]:
         return aUserResponse(200, lita)
@@ -43,3 +49,21 @@ def whoami_handler(event, context):
     if bearer == lou["bearer"]:
         return aUserResponse(200, lou)
     return forbiddenResponse
+
+def whois_handler(event, context):
+    logger.info(event)
+    headers = event["headers"]
+    if(apiKey != headers["x-api-key"]):
+        return forbiddenResponse
+
+    httpContext = event["requestContext"]["http"]
+    path = httpContext["path"]
+    if lita["id"] in path:
+        return aUserResponse(200, lita)
+    if bema["id"] in path:
+        return aUserResponse(200, bema)
+    if bozy["id"] in path:
+        return aUserResponse(200, bozy)
+    if lou["id"] in path:
+        return aUserResponse(200, lou)
+    return notFoundResponse

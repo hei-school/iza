@@ -22,6 +22,16 @@ Resources:
           Properties:
             Path: /whoami
             Method: get
+  WhoisFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.whois_handler
+      Events:
+        WhoisCall:
+          Type: HttpApi
+          Properties:
+            Path: /whois/{userId}
+            Method: get
 
 Outputs:
   HttpApiUrl:
