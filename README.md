@@ -18,7 +18,7 @@ Users are:
 
 | name | role | bearer, put it in `authorization` header as is standard |
 | --- | --- | --- |
-| lita | student | bearer litaId |
-| bema | teacher | bearer bemaId |
-| bozy | teacher | bearer bozyId |
-| lou | manager | bearer louId |
+| lita | student | bearer lita |
+| bema | teacher | bearer bema |
+| bozy | teacher | bearer bozy |
+| lou | manager | bearer lou |
